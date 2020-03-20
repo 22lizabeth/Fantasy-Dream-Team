@@ -80,7 +80,7 @@
             <div class="image">
                 <img :src="'/images/characters/'+character.image">
             </div>
-                <button class="auto" v-on:click="addToFightTeam(character)">Add to Fight Team</button>
+                <button v-if="this.$root.$data.fightTeam.length < 4" class="auto" v-on:click="addToFightTeam(character)">Add to Fight Team</button>
             </div>
         </div>
     </div>
