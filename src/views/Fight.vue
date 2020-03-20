@@ -82,14 +82,14 @@
     methods: {
           generateTeam() {
               this.$root.$data.fightLog = "";
-              var randomNum = Math.floor(Math.random() * (+8 - +0)) + +0; 
+              var randomNum = Math.floor(Math.random() * (+91 - +0)) + +0; 
               var character = this.$root.$data.characters[randomNum];
               //this.$root.$data.enemyTeam.push(character);
               for(var i = 0; i < 4; i++) {
                 //randomNum = Math.floor(Math.random() * (+4 - +0)) + +0; 
                 //character = this.$root.$data.characters[randomNum];
                 while(this.$root.$data.enemyTeam.some(enemy => enemy === character) || this.$root.$data.fightTeam.some(fighter => fighter === character)) {
-                    randomNum = Math.floor(Math.random() * (+8 - +0)) + +0; 
+                    randomNum = Math.floor(Math.random() * (+91 - +0)) + +0; 
                     character = this.$root.$data.characters[randomNum];
                 }
                 this.$root.$data.enemyTeam.push(character);
