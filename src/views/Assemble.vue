@@ -54,7 +54,7 @@
             </div>
             <div class="col-sm">
                 <h1>Slot 4</h1>
-                <div v-if="this.$root.$data.fightTeam.length === 4" class="characterCol">
+                <div v-if="this.$root.$data.fightTeam.length >= 4" class="characterCol">
                     <div class="info">
                         <h1>{{this.$root.$data.fightTeam[3].name}}</h1>
                         <h2>{{this.$root.$data.fightTeam[3].fandom}}</h2>
@@ -73,14 +73,14 @@
     <div class="characterWrapper">
         <div class="characters">
             <div class="character" v-for="character in characters" :key="character.id">
-            <div class="info">
-                <h1>{{character.name}}</h1>
-                <h2>{{character.fandom}}</h2>
-            </div>
-            <div class="image">
-                <img :src="'/images/characters/'+character.image">
-            </div>
-                <button v-if="this.$root.$data.fightTeam.length < 4" class="auto" v-on:click="addToFightTeam(character)">Add to Fight Team</button>
+                <div class="info">
+                    <h1>{{character.name}}</h1>
+                    <h2>{{character.fandom}}</h2>
+                </div>
+                <div class="image">
+                    <img :src="'/images/characters/'+character.image">
+                </div>
+                    <button class="auto" v-on:click="addToFightTeam(character)">Add to Fight Team</button>
             </div>
         </div>
     </div>
@@ -97,7 +97,9 @@
     },
     methods: {
         addToFightTeam(character) {
-            this.$root.$data.fightTeam.push(character);
+            if(this.$root.$data.fightTeam.length < 4) {
+                this.$root.$data.fightTeam.push(character);
+            }
         },
         removeFromFightTeam(index) {
             this.$root.$data.fightTeam = this.$root.$data.fightTeam.filter(person => person !== this.$root.$data.fightTeam[index]);
